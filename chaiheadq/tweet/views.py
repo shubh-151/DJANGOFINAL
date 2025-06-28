@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Tweet
-from .forms import TweetForm
+from .forms import TweetForm,UserRegistrationForm
 from django.shortcuts import get_object_or_404,redirect #need to know
 from django.contrib.auth.decorators import login_required
 
@@ -56,6 +56,10 @@ def tweet_delete(request, tweet_id):
 
 
 def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+    else:
+        form = UserRegistrationForm
     
     return render(request,'tweet_confirm_delete.html',{'form':form})
 
