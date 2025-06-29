@@ -69,7 +69,21 @@
               <button class="btn btn-outline-success" type="submit">
                 Search
               </button>
+
+
+
             </form>
+
+            <a href="{% url 'tweet_list' %}" class="btn btn-primary mx-2">Tweet Home</a>
+
+            {% if user.is_authenticated  %}
+            <form method="" action="{% url 'logout' %}">
+            <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary mx-2">Register</a>
+            <a href="{% url 'login' %}" class="btn btn-success mx-2">Login</a>
+            {% endif %}
           </div>
         </div>
       </nav>
